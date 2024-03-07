@@ -1,0 +1,24 @@
+instances:
+  n:
+    model: npzd/n
+  p:
+    model: npzd/p
+    coupling:
+      n: n/c
+      d: d/c
+  z:
+    model: npzd/z
+    coupling:
+      n: n/c
+      p: p/c
+      d: d/c
+  d:
+    model: npzd/d
+    coupling:
+      n: n/c
+
+  m:
+    model: npzd/m
+    coupling:
+      z: z/c
+

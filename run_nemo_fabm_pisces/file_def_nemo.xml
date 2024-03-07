@@ -1,0 +1,206 @@
+    <!-- 
+============================================================================================================
+=                                           output files definition                                        =
+=                                            Define your own files                                         =
+=                                         put the variables you want...                                    =
+============================================================================================================
+    -->
+    
+    <file_definition type="multiple_file" name="@expname@_@freq@_@startdate@_@enddate@" sync_freq="10d" min_digits="4">
+    
+      <!--file_group id="1ts" output_freq="1ts"  output_level="10" enabled=".TRUE."/--> <!-- 1 time step files -->
+
+      <file_group id="1h" output_freq="1h"  output_level="10" enabled=".TRUE."/> <!-- 1h files -->
+      <file_group id="2h" output_freq="2h"  output_level="10" enabled=".TRUE."/> <!-- 2h files -->
+      <file_group id="3h" output_freq="3h"  output_level="10" enabled=".TRUE."/> <!-- 3h files -->     
+      <file_group id="4h" output_freq="4h"  output_level="10" enabled=".TRUE."/> <!-- 4h files -->
+      <file_group id="6h" output_freq="6h"  output_level="10" enabled=".TRUE."/> <!-- 6h files -->
+     
+      <!--file_group id="1d" output_freq="1d"  output_level="10" enabled=".TRUE."/--> <!-- 1d files -->       
+      <file_group id="3d" output_freq="3d"  output_level="10" enabled=".TRUE."/> <!-- 3d files -->    
+      <file_group id="5d" output_freq="5d"  output_level="10" enabled=".TRUE."/>  <!-- 5d files -->   
+
+      <file_group id="1ts" output_freq="1ts"  output_level="10" enabled=".TRUE.">
+        <!--file id="file1" name_suffix="_grid_T" description="ocean T grid variables" >
+	  <field field_ref="toce"         name="votemper"  />
+	  <field field_ref="soce"         name="vosaline"  />
+	  <field field_ref="sst"          name="sosstsst"  />
+	  <field field_ref="sss"          name="sosaline"  />
+	  <field field_ref="ssh"          name="sossheig"  />
+	  <field field_ref="empmr"        name="sowaflup"  />
+	  <field field_ref="qsr"          name="soshfldo"  />
+          <field field_ref="saltflx"      name="sosfldow"  />
+	  <field field_ref="qt"           name="sohefldo"  />
+	  <field field_ref="mldr10_1"     name="somxl010"  />
+	  <field field_ref="mldkz5"       name="somixhgt"  />
+          <field field_ref="hmld"       name="turbocline_hmld"  />
+        </file-->
+	
+        <!--file id="file2" name_suffix="_grid_U" description="ocean U grid variables" >
+          <field field_ref="uoce"         name="vozocrtx"  />
+          <field field_ref="utau"         name="sozotaux"  />
+        </file>
+	
+        <file id="file3" name_suffix="_grid_V" description="ocean V grid variables" >
+          <field field_ref="voce"         name="vomecrty"  /> 
+          <field field_ref="vtau"         name="sometauy"  /> 
+        </file-->
+	
+        <!--file id="file4" name_suffix="_grid_W" description="ocean W grid variables" >
+          <field field_ref="woce"         name="vovecrtz" />
+          <field field_ref="avt"          name="votkeavt" />
+        </file-->
+
+	<file id="file5" name_suffix="_ptrc_T" description="lobster sms variables" >
+          <field field_ref="phy_c"     name="nano_phyto"  > phy_c * 1e6 </field> 
+          <field field_ref="dia_c"     name="diatoms" > dia_c * 1e6 </field>
+          <field field_ref="zoo_c"     name="microzoo"  > zoo_c * 1e6 </field>
+          <field field_ref="mes_c"     name="mesozoo" > mes_c * 1e6 </field>
+          <field field_ref="no3_c"     name="NO3" > no3_c * 1e6 * 16/122 </field>
+          <field field_ref="nh4_c"     name="NH4" > nh4_c * 1e6 * 16/122 </field>
+          <field field_ref="dom_c"     name="DOM" > dom_c * 1e6 </field>
+          <field field_ref="po4_c"     name="PO4" > po4_c * 1e6 / 122 </field>
+          <field field_ref="sil_si"     name="Si" > sil_si * 1e6 </field>
+          <field field_ref="fer_fe"     name="Fer" > fer_fe * 1e6 </field>
+          <field field_ref="pom_c"     name="POC" > pom_c * 1e6 </field>
+          <field field_ref="gom_c"     name="GOC" > gom_c * 1e6 </field>
+          <field field_ref="dia_si"    name="DSi" > dia_si * 1e6 </field>
+          <field field_ref="dia_fe"    name="DFe" > dia_fe * 1e6 </field>
+          <field field_ref="phy_fe"    name="phyFe" > phy_fe * 1e6 </field>
+          <field field_ref="gom_fe"    name="GOMFe" > gom_fe * 1e6 </field>
+          <field field_ref="pom_fe"    name="POMFe" > pom_fe * 1e6 </field>
+          <field field_ref="phy_ch"    name="phyCh" > phy_ch * 1e6 </field>
+          <field field_ref="dia_ch"    name="DCh" > dia_ch * 1e6 </field>
+          <field field_ref="gom_cal"    name="GOMCal" > gom_cal * 1e6 </field>
+          <field field_ref="carbonate_DIC"    name="CarDic" > carbonate_DIC * 1e6 </field>
+          <field field_ref="carbonate_Alkalini"    name="CarAlk" > carbonate_Alkalini * 1e6 </field>
+          <field field_ref="gom_si"    name="GOMSi" > gom_si * 1e6 </field>
+          <field field_ref="oxy_O2"    name="O2" > oxy_O2 * 1e6 </field>
+	</file>
+
+	<file id="file6" name_suffix="_diad_T" description="additional lobster diagnostics" >
+
+		<!--field field_ref="light_swr_400_500"    name="light_swr_400_500" />
+		<field field_ref="light_swr_500_600"    name="light_swr_500_600" />
+		<field field_ref="light_swr_600_700"    name="light_swr_600_700" /-->
+
+	  <!--field field_ref="optics_etot"    name="PAR" /-->
+          <!--field field_ref="optics_etot_ndcy"   name="etot_ndcy" />
+          <field field_ref="turbocline_hmld" name="hmld" />
+          <field field_ref="shear_xdiss"     name="shear_rate" />
+          <field field_ref="optics_heup"  name="heup" />
+          <field field_ref="optics_heup_01"  name="heup_01" />
+          <field field_ref="optics_v_zqsr"  name="qsr_mean" />
+          <field field_ref="optics_v_dqsr"  name="qsr" />
+          <field field_ref="optics_v_dpqsr100" name="pqsr100" />
+          <field field_ref="optics_pe1"  name="pe1" />
+          <field field_ref="optics_pe2"  name="pe2" />
+          <field field_ref="optics_pe3"  name="pe3" />
+          <field field_ref="optics_Tchl"   name="Tchl"/>
+          <field field_ref="turbocline_davt"   name="avt" />
+          <field field_ref="tra_before"    name = "tra_before" />
+          <field field_ref="tra_after"    name = "tra_after" /-->
+
+          <!--field field_ref="gom_silica_dissolution_remin" name = "zosil" > gom_silica_dissolution_remin * 1e6 </field>
+          <field field_ref="gom_silica_dissolution_zsiremin" name = "zsiremin" />
+          <field field_ref="gom_silica_dissolution_zfacsib"   name = "zfacsib" />
+          <field field_ref="gom_silica_dissolution_zfacsi"   name = "zfacsi" />
+          <field field_ref="gom_silica_dissolution_znusil"   name = "znusil" /-->
+
+
+          <!--field field_ref="dia_xksi_diag"   name="xksi" /-->
+	  <!--field field_ref="phy_zmortp" name="zmortp" /-->
+          
+          <!--field field_ref="carbonate_zomegaca"   name = "zomegaca" /-->
+
+          <!--field field_ref="dia_LN"  name="zlim1" />
+          <field field_ref="dia_LP"  name="zlim2" />
+          <field field_ref="dia_LSi"  name="zlim3" />
+          <field field_ref="dia_LFe"  name="zlim4" /-->
+
+          <!--field field_ref="zoo_grazp" name="graz1p" /-->
+          <!--field field_ref="zoo_grazd" name="graz1d" />
+          <field field_ref="mes_grazp" name="graz2p" />
+          <field field_ref="mes_grazd" name="graz2d" /-->
+
+          <!--field field_ref="mes_quotan_diag" name="quotan" /-->
+
+
+
+          <!--field field_ref="phy_xfracal"   name = "xfracal" />
+          <field field_ref="phy_zrespp"   name="zresp"/>
+          <field field_ref="phy_ztortp"   name="ztortp" />
+
+          <field field_ref="phy_Mu"    name="xlim" />
+          <field field_ref="phy_PPPHY"  name="zpr" />
+          <field field_ref="phy_PPNEW"  name="zpronew" />
+
+
+	  <field field_ref="phy_PFe"  name="zprofe" /-->
+
+
+       </file>
+
+        <!--file id="file7" name_suffix="_diad_T" description="additional lobster diagnostics" >
+            <field field_ref="migration_move_migrator_distributed_weights"  name = "distributed" />
+            <field field_ref="migration_vertical_weights_integral"   name = "integral" />
+            <field field_ref="migration_move_local"   name = "local" />
+            <field field_ref="migration_move_local_loss"  name = "local_loss" />
+            <field field_ref="migration_move_mortality_switch" name = "mortality_switch" />
+            <field field_ref="migration_move_term1" name = "term1" />
+            <field field_ref="migration_move_term2" name = "term2" />
+            <field field_ref="migration_move_par"  name = "par" /> 
+            <field field_ref="migration_vertical_weights_migrator_integral_random_weights" name = "integral_random_weights" />
+            <field field_ref="migration_vertical_weights_migrator_random_weights" name = "local_random" />
+            <field field_ref="optics_par0" name = "par0" />
+            <field field_ref="migration_vertical_distribution_migrator_presence" name = "migrator_presence" />
+            <field field_ref="migration_move_thickness" name = "thickness" />
+            <field field_ref="migration_vertical_distribution_parmean" name = "parmean" /-->
+            <!--field field_ref="migration_vertical_weights_parmean0" name = "parmean0" /-->
+            <!--field field_ref="optics_v_zqsr"  name="qsr_mean" />
+            <field field_ref="optics_v_dqsr"  name="qsr" />
+
+        </file-->
+	
+      </file_group>
+
+      <file_group id="1m" output_freq="1mo" output_level="10" enabled=".TRUE."/> <!-- real monthly files -->
+      <file_group id="2m" output_freq="2mo" output_level="10" enabled=".TRUE."/> <!-- real 2m files -->
+      <file_group id="3m" output_freq="3mo" output_level="10" enabled=".TRUE."/> <!-- real 3m files -->
+      <file_group id="4m" output_freq="4mo" output_level="10" enabled=".TRUE."/> <!-- real 4m files -->
+      <file_group id="6m" output_freq="6mo" output_level="10" enabled=".TRUE."/> <!-- real 6m files -->
+
+      <!--file_group id="1y"  output_freq="1y" output_level="10" enabled=".TRUE."--> <!-- real yearly files -->
+
+	<!--file id="file6" name_suffix="_diad_T" description="additional lobster diagnostics" >  
+          <field field_ref="FNO3PHY"   /> 
+          <field field_ref="FNH4PHY"   /> 
+          <field field_ref="FNH4NO3"   /> 
+          <field field_ref="TNO3PHY"   /> 
+          <field field_ref="TNH4PHY"   /> 
+          <field field_ref="TPHYDOM"   /> 
+          <field field_ref="TPHYNH4"   /> 
+          <field field_ref="TPHYZOO"   /> 
+          <field field_ref="TPHYDET"   /> 
+          <field field_ref="TDETZOO"   /> 
+          <field field_ref="TDETSED"   /> 
+          <field field_ref="TZOODET"   /> 
+          <field field_ref="TZOOBOD"   /> 
+          <field field_ref="TZOONH4"   /> 
+          <field field_ref="TZOODOM"   /> 
+          <field field_ref="TNH4NO3"   /> 
+          <field field_ref="TDOMNH4"   /> 
+          <field field_ref="TDETNH4"   /> 
+          <field field_ref="TPHYTOT"   /> 
+          <field field_ref="TZOOTOT"   /> 
+          <field field_ref="SEDPOC"    /> 
+	</file>
+
+      </file_group-->
+
+      <file_group id="2y"  output_freq="2y" output_level="10" enabled=".TRUE."/> <!-- real 2y files -->
+      <file_group id="5y"  output_freq="5y" output_level="10" enabled=".TRUE."/> <!-- real 5y files -->
+      <file_group id="10y" output_freq="10y" output_level="10" enabled=".TRUE."/> <!-- real 10y files -->
+
+   </file_definition>
+ 

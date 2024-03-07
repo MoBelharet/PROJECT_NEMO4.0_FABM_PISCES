@@ -1,0 +1,54 @@
+# ifort compiler options for linux
+# NCDF_INC    netcdf include file
+# NCDF_LIB    netcdf library
+# FC          Fortran compiler command
+# FCFLAGS     Fortran compiler flags
+# FFLAGS      Fortran 77 compiler flags
+# LD          linker
+# LDFLAGS     linker flags, e.g. -L<lib dir> if you have libraries in a
+# FPPFLAGS    pre-processing flags
+# AR          assembler
+# ARFLAGS     assembler flags
+# MK          make
+# USER_INC    additional include files for the compiler,  e.g. -I<include dir>
+# USER_LIB    additional libraries to pass to the linker, e.g. -l<library>
+# CC          C compiler used to compile conv for AGRIF
+# CFLAGS      compiler flags used with CC
+# debug: -g  -check bounds -check uninit -check pointers -traceback
+# #-xAVX
+#
+#
+
+%HOME_PATH            /home/belharet/Documents/PROJECT_NEMO4.0_FABM_PISCES
+%FABM_INC            -I%HOME_PATH/local/fabm/nemo/include  
+%FABM_LIB            -L%HOME_PATH/local/fabm/nemo/lib -lfabm
+
+%XIOS_INC            -I/home/belharet/Documents/FABM_PROJECT/xios-2.5/inc
+%XIOS_LIB            -L/home/belharet/Documents/FABM_PROJECT/xios-2.5/lib -lxios
+
+%HDF_INC             -I/usr/include/hdf5/serial
+%HDF_LIB             -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5_hl -lhdf5 -lz
+
+%NCDF_INC            -I/usr/include %HDF_INC %FABM_INC %XIOS_INC  #I/usr/local/include -I/usr/include
+%NCDF_LIB            -L/usr/lib/x86_64-linux-gnu -lnetcdff -lnetcdf -lstdc++ %HDF_LIB %FABM_LIB  #-L/usr/local/lib -lnetcdf  -L/usr/lib -lnetcdff   #/usr/lib/x86_64-linux-gnu 
+
+%MPI_INC             -I/usr/include/mpi
+%MPI_LIB             -L/usr/lib -lmpi
+
+%CPP	             cpp
+%FC                  mpif90  #ifort -fpp 
+# norep 156 %FCFLAGS             -i4 -r8 -O3 -fp-model precise
+# norep 156 %FCFLAGS             -i4 -r8 -O2 -fp-model precise
+%FCFLAGS             -fdefault-real-8 -O3 -ffree-line-length-none %NCDF_INC #-funroll-all-loops -fcray-pointer#-Wdate-time -D_FORTIFY_SOURCE=2  #-i4 -r8 -O0 -fp-model precise  
+%FFLAGS              %FCFLAGS
+%LD                  mpif90 #ifort 
+%FPPFLAGS            -P -traditional 
+%LDFLAGS             -O2 %XIOS_LIB %NCDF_LIB 
+%AR                  ar
+%ARFLAGS             -rs
+%MK                  make 
+%USER_INC            %FABM_INC %HDF_INC %NCDF_INC %XIOS_INC #%MPI_INC
+%USER_LIB            %FABM_LIB %HDF_LIB %NCDF_LIB %XIOS_LIB #%MPI_LIB 
+
+%CC                  mpicc
+%CFLAGS              -O0

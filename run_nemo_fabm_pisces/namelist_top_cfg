@@ -1,0 +1,96 @@
+!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+!! NEMO/TOP :   Configuration namelist : used to overwrite defaults values defined in SHARED/namelist_top_ref
+!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+!-----------------------------------------------------------------------
+&namtrc_run      !   run information
+!-----------------------------------------------------------------------
+   ln_top_euler  = .false.   !  use Euler time-stepping for TOP
+/
+!-----------------------------------------------------------------------
+&namtrc          !   tracers definition
+!-----------------------------------------------------------------------
+   jp_bgc        =  24
+   !
+   ln_pisces     =  .false.
+   ln_age        =  .false.
+   ln_cfc11      =  .false.
+   ln_cfc12      =  .false.
+   ln_c14        =  .false.
+   ln_my_trc     =  .false.
+   !_____________!____________!______________________________________________________________!_______________!________________!
+   !             !   name                !         title of the field                                 !   units       ! init from file ! 
+    sn_tracer(1)  = 'no3_c     '         ,    'Nitrates Concentration                 ',  'mol-C/L' ,  .false.
+    sn_tracer(2)  = 'nh4_c     '         ,    'Ammonium Concentration                 ',  'mol-C/L' ,  .false.
+    sn_tracer(3)   = 'po4_c     '         ,    'Phosphate Concentration                ',  'mol-C/L' ,  .false.
+    sn_tracer(4)   = 'sil_si      '       ,    'Silicate Concentration                 ',  'mol-C/L' ,  .false.
+    sn_tracer(5)  = 'fer_fe     '        ,    'Dissolved Iron Concentration           ',  'mol-C/L' ,  .false.
+    sn_tracer(6)  = 'dom_c     '         ,    'Dissolved organic Concentration        ',  'mol-C/L' ,  .false. 
+    sn_tracer(7)   = 'pom_c     '         ,    'Small organic carbon Concentration     ',  'mol-C/L' ,  .false.
+    sn_tracer(8)  = 'pom_fe     '        ,    'Small iron particles Concentration     ',  'mol-C/L' ,  .false.
+    sn_tracer(9)  = 'gom_c     '         ,    'Big organic carbon Concentration       ',  'mol-C/L' ,  .false.
+    sn_tracer(10)  = 'gom_fe     '        ,    'Big iron particles Concentration       ',  'mol-C/L' ,  .false.
+    sn_tracer(11)   = 'gom_cal   '         ,    'Calcite Concentration                  ',  'mol-C/L' ,  .false.
+    sn_tracer(12)  = 'gom_si   '          ,    'Sinking biogenic Silicate Concentration',  'mol-C/L' ,  .false.
+    sn_tracer(13)   = 'phy_c     '         ,    'Nanophytoplankton Concentration        ',  'mol-C/L' ,  .false.
+    sn_tracer(14)  = 'phy_ch    '         ,    'Nano chlorophyl Concentration          ',  'mol-C/L' ,  .false.
+    sn_tracer(15)  = 'phy_fe     '        ,    'Nano iron Concentration                ',  'mol-C/L' ,  .false.
+    sn_tracer(16)  = 'dia_c    '          ,    'Diatoms Concentration                  ',  'mol-C/L' ,  .false.
+    sn_tracer(17)  = 'dia_ch    '         ,    'Diatoms chlorophyl Concentration       ',  'mol-C/L' ,  .false.
+    sn_tracer(18)  = 'dia_fe     '        ,    'Diatoms iron  Concentration            ',  'mol-C/L' ,  .false.
+    sn_tracer(19)  = 'dia_si     '        ,    'Diatoms Silicate Concentration         ',  'mol-C/L' ,  .false.
+    sn_tracer(20)   = 'carbonate_DIC     ' ,    'Dissolved inorganic Concentration      ',  'mol-C/L' ,  .false.
+    sn_tracer(21)   = 'carbonate_Alkalini' ,    'Total Alkalinity Concentration         ',  'eq/L '   ,  .false.
+    sn_tracer(22)   = 'oxy_O2      '       ,    'Dissolved Oxygen Concentration         ',  'mol-C/L' ,  .false.
+    sn_tracer(23)   = 'zoo_c     '         ,    'Microzooplankton Concentration         ',  'mol-C/L' ,  .false.
+    sn_tracer(24)  = 'mes_c    '          ,    'Mesozooplankton Concentration          ',  'mol-C/L' ,  .false.
+/  
+!-----------------------------------------------------------------------
+&namage          !   AGE 
+!-----------------------------------------------------------------------
+/
+!-----------------------------------------------------------------------
+&namtrc_dta      !    Initialisation from data input file
+!-----------------------------------------------------------------------
+/
+!-----------------------------------------------------------------------
+&namtrc_adv      !   advection scheme for passive tracer                (default: NO selection)
+!-----------------------------------------------------------------------
+   ln_trcadv_fct =  .false.   !  FCT scheme
+      nn_fct_h   =  2               !  =2/4, horizontal 2nd / 4th order
+      nn_fct_v   =  2               !  =2/4, vertical   2nd / COMPACT 4th order
+   ln_trcadv_OFF =  .true.  ! No advection
+/
+!-----------------------------------------------------------------------
+&namtrc_ldf      !   lateral diffusion scheme for passive tracer        (default: NO selection)
+!-----------------------------------------------------------------------
+   ln_trcldf_OFF   =  .false.    !  No explicit diffusion
+   ln_trcldf_tra   =  .true.     !  use active tracer setting
+/
+!-----------------------------------------------------------------------
+&namtrc_rad      !  treatment of negative concentrations 
+!-----------------------------------------------------------------------
+/
+!-----------------------------------------------------------------------
+&namtrc_snk      !  Sedimentation of particles
+!-----------------------------------------------------------------------
+/
+!-----------------------------------------------------------------------
+&namtrc_dmp      !   passive tracer newtonian damping                   (ln_trcdmp=T)
+!-----------------------------------------------------------------------
+/
+!-----------------------------------------------------------------------
+&namtrc_ice      !    Representation of sea ice growth & melt effects
+!-----------------------------------------------------------------------
+/
+!-----------------------------------------------------------------------
+&namtrc_trd      !   diagnostics on tracer trends                       ('key_trdtrc')
+!----------------------------------------------------------------------
+/
+!----------------------------------------------------------------------
+&namtrc_bc       !   data for boundary conditions
+!-----------------------------------------------------------------------
+/
+!----------------------------------------------------------------------
+&namtrc_bdy      !   Setup of tracer boundary conditions
+!-----------------------------------------------------------------------
+/

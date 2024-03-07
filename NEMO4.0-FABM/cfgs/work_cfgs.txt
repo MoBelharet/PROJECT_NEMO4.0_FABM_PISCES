@@ -1,0 +1,3 @@
+test_nemo_fabm_2  OCE TOP
+test_nemo_fabm  OCE TOP
+test_nemo_pisces OCE TOP
